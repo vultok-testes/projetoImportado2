@@ -6,6 +6,13 @@ import java.sql.SQLException;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 
+/**
+ * Classe serve para gerar conexões com banco de dados, usando - para tanto - 
+ * <br>a classe ConfiguraDB como objeto de configuração
+ * @author Elton
+ * @version 1
+ *
+ */
 public class FabricaDeConexoes {
 
 	String url = "jdbc:mysql://localhost/sceweb";
@@ -13,6 +20,10 @@ public class FabricaDeConexoes {
 	String usuario = "root";
 	String senha = "";
 
+	/**
+	 * Construtor da classe FabricaDeConexões
+	 * @param configura
+	 */
 	public FabricaDeConexoes(ConfiguraDB configura) {
 		this.url = configura.getUrl();
 		this.driver = configura.getDriver();
@@ -20,10 +31,15 @@ public class FabricaDeConexoes {
 		this.senha = configura.getSenha();
 	}
 
-	public FabricaDeConexoes() {
+	/**
+	 * Construtor sem parâmetros da classe FabricaDeConexoes
+	 */
+	public FabricaDeConexoes() {}
 
-	}
-
+	/**
+	 * 
+	 * @return Uma conexão com o banco de dados
+	 */
 	public Connection getConnection() {
 		try {
 			Class.forName(driver);

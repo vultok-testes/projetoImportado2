@@ -15,11 +15,19 @@ public class Empresa {
 	String endereco;
 	String telefone;
 
+	/**
+	 * Método retorna o CNPJ da empresa
+	 * @return O CNPJ da empresa
+	 */
 	public String getCnpj() {
 		return cnpj;
 	}
 	
-	
+	/**
+	 * Método udado para atribuir o CNPJ da empresa, antes validando-o
+	 * @param cnpj
+	 * @return Uma string informando o status da operação
+	 */
 	public String setCnpj(String cnpj) {
 		String msg="";
 		if(isValido(cnpj)){
@@ -30,39 +38,94 @@ public class Empresa {
 		return msg;
 	}
 
+	/**
+	 * Método retorna o nome da empresa
+	 * @return O nome da empresa
+	 */
 	public String getNomeDaEmpresa() {
 		return nomeDaEmpresa;
 	}
 
+	/**
+	 * Método atribui o nome da empresa
+	 * @param nomeDaEmpresa
+	 */
 	public void setNomeDaEmpresa(String nomeDaEmpresa) {
 		this.nomeDaEmpresa = nomeDaEmpresa;
 	}
 
+	/**
+	 * Método retorna o nome da empresa
+	 * @return O nome fantasia da empresa
+	 */
 	public String getNomeFantasia() {
 		return nomeFantasia;
 	}
 
-	public void setNomeFantasia(String nomeFantasia) {
-		this.nomeFantasia = nomeFantasia;
+	/**
+	 * Método atribui o nome fantasia da empresa, antes velidando-o para não permitir nomes em branco
+	 * @param nomeFantasia
+	 * @return Uma String informando o status da operação
+	 */
+	public String setNomeFantasia(String nomeFantasia) {
+		String msg = "0";
+		
+		if(nomeFantasia.length() == 0) {
+			msg = "Nome fantasia não pode estar em branco!";
+		} else {
+			this.nomeFantasia = nomeFantasia;
+		}
+		
+		return msg;
 	}
 
+	/**
+	 * Método retorna o endereço da empresa
+	 * @return O endereço
+	 */
 	public String getEndereco() {
 		return endereco;
 	}
 
+	/**
+	 * Atribui o endereço da empresa
+	 * @param endereco
+	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
+	/**
+	 * Método retorna o telefone da empresa
+	 * @return O telefone
+	 */
 	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	/**
+	 * Método atribui o telefone da empresa, validando-o para não permitir números em branco
+	 * @param telefone
+	 * @return Uma string com 0, caso válido; caso contrário uma mensagem informando o ocorrido
+	 */
+	public String setTelefone(String telefone) {
+		String msg = "0";
+		
+		if(telefone.length() == 0) {
+			msg = "Telefone não pode estar em branco!";
+		} else {
+			this.telefone = telefone;
+		}
+		
+		return msg;
 	}
-	/*
-	 * valida o cnpj
+	
+	/**
+	 * Método usado para validar o CNPJ inserido
+	 * <br>O método verifica se o CNPJ não está em branco, se não foram inseridos apenas 
+	 * <br>números iguais e verifica se os digitos verificadores estão corretos.
+	 * @param cnpj - O CNPJ a ser validado
+	 * @return <b><code>false</code></b> se for inválido <br><b><code>true</code></b> se for válido
 	 */
 	public boolean isValido(String cnpj) {
 		char dig13, dig14; 
